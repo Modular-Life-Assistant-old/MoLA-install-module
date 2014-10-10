@@ -1,0 +1,7 @@
+{
+    "name": "Domotic",
+    "description": "Control your home.",
+    "modules_require": [
+        "git:git@github.com:treemo/MoLA-internet_connection_check-module.git"
+    ]
+}
