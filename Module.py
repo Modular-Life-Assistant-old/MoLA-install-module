@@ -39,7 +39,7 @@ class Module(Component):
     def install_git_module(self, url):
         module_name = url.split('/')[-1].split('-')[1]
         return self.install_module_dependencies(subprocess.getoutput(
-            'git clone "%s" "%s%s"' % (url,Daemon.MODULES_PATH, module_name)
+            'git clone "%s" "%s"' % (url, os.path.join(Daemon.MODULES_PATH, module_name))
         ).split('\n')[0].split()[-1].replace('.', '').replace("'", ''))
 
     def install_module(self, name):
@@ -88,6 +88,6 @@ class Module(Component):
 
         self.install_modules(config)
         Log.debug('install sucessfull')
-        shutil.rmtree('%sinstall' % Daemon.MODULES_PATH)
+        shutil.rmtree(os.path.join(Daemon.MODULES_PATH, 'install'))
         Daemon.restart()
 
